@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Eye, EyeOff, Grid3X3, Loader2 } from "lucide-react";
+import { Eye, EyeOff, Loader2 } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
@@ -13,7 +13,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import signupUser from "@/actions/auth/SignupUser";
+import signupUser from "@/server/actions/auth/SignupUser";
+import Image from "next/image";
 
 const signupSchema = z
   .object({
@@ -85,10 +86,16 @@ export default function SignupPage() {
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
-        <Card className="border-2 border-dashed border-blue-300">
+        <Card className="border-2">
           <CardHeader className="text-center pb-6">
             <div className="flex items-center justify-center space-x-2 mb-4">
-              <Grid3X3 className="h-5 w-5 text-blue-600" />
+              <Image
+                src="/images/HiFive_Main_Logo_Portrait.png"
+                alt="HiFive"
+                height={20}
+                width={20}
+                className="h-8 w-auto"
+              />
               <span className="font-semibold text-gray-900">Dashboard</span>
             </div>
             <h1 className="text-2xl font-semibold text-gray-900">
@@ -101,7 +108,7 @@ export default function SignupPage() {
               <div className="space-y-2">
                 <Label
                   htmlFor="fullName"
-                  className="text-sm font-medium text-gray-700"
+                  className="text-sm font-medium text-hifive-gray"
                 >
                   Full name
                 </Label>
@@ -125,7 +132,7 @@ export default function SignupPage() {
               <div className="space-y-2">
                 <Label
                   htmlFor="email"
-                  className="text-sm font-medium text-gray-700"
+                  className="text-sm font-medium text-hifive-gray"
                 >
                   Email
                 </Label>
@@ -145,7 +152,7 @@ export default function SignupPage() {
               <div className="space-y-2">
                 <Label
                   htmlFor="password"
-                  className="text-sm font-medium text-gray-700"
+                  className="text-sm font-medium text-hifive-gray"
                 >
                   Password
                 </Label>
@@ -183,7 +190,7 @@ export default function SignupPage() {
               <div className="space-y-2">
                 <Label
                   htmlFor="confirmPassword"
-                  className="text-sm font-medium text-gray-700"
+                  className="text-sm font-medium text-hifive-gray"
                 >
                   Confirm password
                 </Label>
@@ -218,7 +225,7 @@ export default function SignupPage() {
                 )}
               </div>
 
-              <div className="flex items-start space-x-2">
+              <div className="flex items-center space-x-2">
                 <Controller
                   name="agreeToTerms"
                   control={control}
@@ -228,35 +235,48 @@ export default function SignupPage() {
                       id="agreeToTerms"
                       checked={field.value}
                       onCheckedChange={field.onChange}
-                      className="mt-1"
+                      className={`mt-0.5 ${
+                        errors.agreeToTerms
+                          ? "ring-2 ring-red-500 ring-offset-2"
+                          : ""
+                      }`}
                       disabled={isLoading}
                     />
                   )}
                 />
-                <Label
+                <label
                   htmlFor="agreeToTerms"
-                  className="text-sm text-gray-700 leading-relaxed"
+                  className="text-sm text-hifive-gray leading-relaxed select-none cursor-pointer flex items-center"
                 >
-                  I agree to the{" "}
-                  <Link href="#" className="text-blue-600 hover:underline">
-                    Terms of Service
-                  </Link>{" "}
-                  and{" "}
-                  <Link href="#" className="text-blue-600 hover:underline">
-                    Privacy Policy
-                  </Link>
-                </Label>
+                  <span>
+                    I agree to the{" "}
+                    <Link
+                      href="#"
+                      className="text-hifive-blue hover:underline inline"
+                    >
+                      Terms of Service
+                    </Link>{" "}
+                    and{" "}
+                    <Link
+                      href="#"
+                      className="text-hifive-blue hover:underline inline"
+                    >
+                      Privacy Policy
+                    </Link>
+                  </span>
+                  {errors.agreeToTerms && (
+                    <span
+                      className="ml-2 inline-block w-2 h-2 rounded-full bg-red-500"
+                      title={errors.agreeToTerms.message}
+                    />
+                  )}
+                </label>
               </div>
-              {errors.agreeToTerms && (
-                <p className="text-sm text-red-600">
-                  {errors.agreeToTerms.message}
-                </p>
-              )}
 
               <Button
                 type="submit"
                 disabled={isLoading}
-                className="w-full bg-blue-600 hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
+                className="w-full bg-hifive-blue hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
               >
                 {isLoading ? (
                   <>
@@ -272,7 +292,10 @@ export default function SignupPage() {
             <div className="text-center">
               <span className="text-sm text-gray-600">
                 Already have an account?{" "}
-                <Link href="/login" className="text-blue-600 hover:underline">
+                <Link
+                  href="/login"
+                  className="text-hifive-blue hover:underline"
+                >
                   Log in
                 </Link>
               </span>

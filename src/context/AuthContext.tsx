@@ -9,7 +9,7 @@ import {
 } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { User } from "@/types/user.type";
-import { loginUser, signupUser } from "@/actions/auth";
+import { loginUser, signupUser } from "@/server/actions/auth";
 
 interface SignupInput {
   fullName: string;

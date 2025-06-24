@@ -12,46 +12,44 @@ export default function LandingPage() {
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
             <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
-                <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center">
-                  <div className="w-3 h-3 bg-blue-600 rounded-full"></div>
-                </div>
-              </div>
-              <div>
-                <div className="font-bold text-blue-600 text-lg">HIFIVE</div>
-                <div className="text-xs text-gray-600 -mt-1">COWORKING HUB</div>
-              </div>
+              <Image
+                src="/images/HiFive_Main_Logo.png"
+                alt="HiFive"
+                height={40}
+                width={200}
+                className="h-12 w-auto"
+              />
             </div>
 
             {/* Navigation */}
             <nav className="hidden md:flex items-center space-x-8">
               <Link
                 href="#"
-                className="text-gray-700 hover:text-blue-600 transition-colors"
+                className="text-hifive-gray hover:text-hifive-blue transition-colors"
               >
                 About
               </Link>
               <Link
                 href="#"
-                className="text-gray-700 hover:text-blue-600 transition-colors"
+                className="text-hifive-gray hover:text-hifive-blue transition-colors"
               >
                 Spaces
               </Link>
               <Link
                 href="#"
-                className="text-gray-700 hover:text-blue-600 transition-colors"
+                className="text-hifive-gray hover:text-hifive-blue transition-colors"
               >
                 Membership
               </Link>
               <Link
                 href="#"
-                className="text-gray-700 hover:text-blue-600 transition-colors"
+                className="text-hifive-gray hover:text-hifive-blue transition-colors"
               >
                 Events
               </Link>
               <Link
                 href="#"
-                className="text-gray-700 hover:text-blue-600 transition-colors"
+                className="text-hifive-gray hover:text-hifive-blue transition-colors"
               >
                 Contact
               </Link>
@@ -62,13 +60,13 @@ export default function LandingPage() {
               <Link href="/login">
                 <Button
                   variant="outline"
-                  className="bg-white text-blue-600 border-blue-600 hover:bg-blue-50"
+                  className="bg-white text-hifive-blue border-hifive-blue hover:bg-blue-50"
                 >
                   Login
                 </Button>
               </Link>
               <Link href="/signup">
-                <Button className="bg-blue-600 hover:bg-blue-700">
+                <Button className="bg-hifive-blue hover:bg-blue-700">
                   Sign Up
                 </Button>
               </Link>
@@ -82,7 +80,7 @@ export default function LandingPage() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className="space-y-8">
-            <h1 className="text-5xl lg:text-6xl font-bold text-blue-600 leading-tight">
+            <h1 className="text-5xl lg:text-6xl font-bold text-hifive-blue leading-tight">
               A PLACE
               <br />
               BEYOND
@@ -99,13 +97,13 @@ export default function LandingPage() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button className="bg-blue-600 hover:bg-blue-700 px-8 py-3 text-base">
+              <Button className="bg-hifive-blue hover:bg-blue-700 px-8 py-3 text-base">
                 Explore Membership Options
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
               <Button
                 variant="outline"
-                className="bg-white text-blue-600 border-blue-600 hover:bg-blue-50 px-8 py-3 text-base"
+                className="bg-white text-hifive-blue border-hifive-blue hover:bg-blue-50 px-8 py-3 text-base"
               >
                 Schedule a Visit
               </Button>
