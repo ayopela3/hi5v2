@@ -42,6 +42,8 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 
+  --color-hifive-light-blue: #eff6ff;
+  --color-hifive-brand-blue: #1e40af;
   --color-hifive-blue: #2563eb;
   --color-hifive-gray: #374151;
 }
