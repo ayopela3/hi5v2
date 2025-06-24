@@ -53,7 +53,7 @@ export default function SignupPage() {
 
     try {
       const { fullName, email, password } = data;
-      const { user, error } = await signupUser({
+      const { error } = await signupUser({
         fullName,
         email,
         password,
@@ -75,6 +75,7 @@ export default function SignupPage() {
         router.push("/login");
       }, 1000);
     } catch (error) {
+      console.error("Signup error:", error);
       toast.error("Signup Failed", {
         description: "An unexpected error occurred. Please try again.",
       });

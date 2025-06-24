@@ -44,7 +44,7 @@ export default function LoginPage() {
     try {
       const email = data.emailOrUsername;
       const password = data.password;
-      const { user, error } = await loginUser(email, password);
+      const { error } = await loginUser(email, password);
 
       if (error) {
         toast.error("Login Failed", {
@@ -61,6 +61,7 @@ export default function LoginPage() {
         router.push("/dashboard");
       }, 1000);
     } catch (error) {
+      console.error("Login error:", error);
       toast.error("Login Failed", {
         description: "An unexpected error occurred. Please try again.",
       });
